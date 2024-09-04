@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module tt_um_yuri_panchul_schoolriscv-cpu-with-fibonacci-program
+module tt_um_yuri_panchul_schoolriscv_cpu_with_fibonacci_program
 (
     input  [7:0] ui_in,    // Dedicated inputs
     output [7:0] uo_out,   // Dedicated outputs
