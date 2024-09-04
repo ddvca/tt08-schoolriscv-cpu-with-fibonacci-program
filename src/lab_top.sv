@@ -21,7 +21,10 @@ module lab_top
 )
 (
     input                        clk,
+
     input                        slow_clk,
+    input                        slow_clk_en,
+
     input                        rst,
 
     // Keys, switches, LEDs

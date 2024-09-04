@@ -64,20 +64,20 @@ module tt_um_yuri_panchul_schoolriscv_cpu_with_fibonacci_program
     # (
         .clk_mhz      ( clk_mhz     ),
         .w_key        ( w_key       ),
-        .w_sw         ( w_sw        ),
+        .w_sw         ( w_key       ),
         .w_digit      ( w_digit     )
     )
     i_lab_top
     (
         .clk          ( clk         ),
 
-        .slow_clk     ( slow_clk    ),
+        .slow_clk     ( clk         ),
         .slow_clk_en  ( slow_clk_en ),
 
         .rst          ( rst         ),
 
         .key          ( key         ),
-        .sw           ( sw          ),
+        .sw           ( key         ),
         .led          (             ),
 
         .abcdefgh     ( abcdefgh    ),
