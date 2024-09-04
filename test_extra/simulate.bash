@@ -18,6 +18,9 @@ java -jar ../../bin/rars1_6.jar  \
     nc a ae1 dump .text HexText  \
     program.hex ../program.s
 
+# We need to copy it for synthesis
+cp program.hex ../../src/program.hex
+
 #-----------------------------------------------------------------------------
 
 iverilog -g2005-sv -s tb          \
