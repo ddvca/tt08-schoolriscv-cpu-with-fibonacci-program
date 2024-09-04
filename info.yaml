@@ -1,30 +1,33 @@
 # Tiny Tapeout project information
 project:
-  title:        "Adder with Flow Control"  # Project title
-  author:       "Yuri Panchul"             # Your name
-  discord:      ""                         # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "An adder with a separate flow control for each argument and the result"  # One line description of what your project does
-  language:     "SystemVerilog"            # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     10                         # Clock frequency in Hz (or 0 if not applicable)
+  title:        "schoolRISCV CPU with Fibonacci program"  # Project title
+  author:       "Yuri Panchul"   # Your name
+  discord:      "yuri_panchul"   # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "A minimalistic SoC with a schoolRISCV educational CPU and a ROM memory with a program that computes the Fibonacci numbers."  # One line description of what your project does
+  language:     "SystemVerilog"  # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     50               # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_yuri_panchul_adder_with_flow_control"
+  top_module:  "tt_um_yuri_panchul_schoolriscv_cpu_with_fibonacci_program"
 
   # List your project's source files here.
   # Source files must be in ./src and you must list each source file separately, one per line.
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "adder_with_flow_control.sv"
-    - "fcb_1_single_allows_back_to_back.sv"
-    - "fcb_2_single_half_perf_no_comb_path.sv"
-    - "fcb_3_single_for_pipes_with_global_stall.sv"
-    - "fcb_4_wrapped_2_deep_fifo.sv"
-    - "fcb_5_double_buffer_from_dally_harting.sv"
-    - "ff_fifo_pow2_depth.sv"
+    - "instruction_rom.sv"
+    - "lab_top.sv"
     - "project.sv"
+    - "register_with_rst.sv"
+    - "seven_segment_display.sv"
+    - "sr_alu.sv"
+    - "sr_control.sv"
+    - "sr_cpu.sv"
+    - "sr_decode.sv"
+    - "sr_register_file.sv"
+    - "strobe_gen.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:

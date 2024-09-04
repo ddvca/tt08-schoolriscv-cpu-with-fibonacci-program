@@ -19,14 +19,14 @@ A self-checking testbench for the design is located in a directory
 * *clean.bash* - a script to delete temporary files produced by *simulate.bash*.
 
 * *simulate.bash* - a script that simulates the design together with a testbench
-  using Icarus Verilog and produces *log.txt*.
+  using Icarus Verilog, and produces *log.txt*.
   Before the simulation, the script compiles assemply *program.s*
-  using RARS instruction set simulator (ISS) and generates a file
-  *program.hex*. This *program.hex* file can be used to fill the ROM
-  for either simulation or synthesis.
+  using RARS instruction set simulator (ISS) that generates a file
+  *program.hex*. This *program.hex* is used to fill the ROM
+  for both simulation or synthesis.
 
-* *tb.sv* - a self-checking testbench that generates a log, a status  **PASS** or **FAIL**,
-  and performance data.
+* *tb.sv* - a self-checking testbench that generates a log
+  and the status **PASS** or **FAIL**.
 
 After the manufacturing, the design can be manually tested by resetting,
 driving a slow (3 MHz) clock, and observing the outputs.

@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module tt_um_yuri_panchul_adder_with_flow_control
+module tt_um_yuri_panchul_schoolriscv-cpu-with-fibonacci-program
 (
     input  [7:0] ui_in,    // Dedicated inputs
     output [7:0] uo_out,   // Dedicated outputs
@@ -17,35 +17,86 @@ module tt_um_yuri_panchul_adder_with_flow_control
     input        rst_n     // reset_n - low to reset
 );
 
-    // All output pins must be assigned. If not used, assign to 0.
+    //------------------------------------------------------------------------
 
-    assign uio_out = '0;
-    assign uio_oe  = '0;
+    localparam clk_mhz = 50,
+               w_key   = 1,
+               w_digit = 8;
 
-    // List all unused inputs to prevent warnings
+    //------------------------------------------------------------------------
 
-    wire _unused = & { ena, ui_in [7:3], 1'b0 };
+    wire                 rst;
+    wire                 slow_clk_en;
+    wire                 key;
 
-    // User design module instantiation
+    wire [          7:0] abcdefgh;
+    wire [w_digit - 1:0] digit;
 
-    adder_with_flow_control
-    # (.width (4))
-    inst
+    //------------------------------------------------------------------------
+
+    assign rst     = ~ rst_n';
+    assign key     =   ui_in [0];
+
+    assign uo_out  =   abcdefgh;
+    assign uio_out =   digit;
+
+    assign uio_oe  = '1;
+
+    wire _unused = & { ena, ui_in [7:1], uio_in, 1'b0 };
+
+    //------------------------------------------------------------------------
+
+    strobe_gen
+    # (
+        .clk_mhz      ( clk_mhz     ),
+        .strobe_hz    ( 3           )
+    )
+    i_strobe_gen
     (
-        .clk       (   clk           ),
-        .rst       ( ~ rst_n         ),
+        .clk          ( clk         ),
+        .rst          ( rst         ),
+        .strobe       ( slow_clk_en )
+    );
 
-        .a_vld     (   ui_in   [0]   ),
-        .a_rdy     (   uo_out  [0]   ),
-        .a_data    (   uio_in  [3:0] ),
+    //------------------------------------------------------------------------
 
-        .b_vld     (   ui_in   [1]   ),
-        .b_rdy     (   uo_out  [1]   ),
-        .b_data    (   uio_in  [7:4] ),
+    lab_top
+    # (
+        .clk_mhz      ( clk_mhz     ),
+        .w_key        ( w_key       ),
+        .w_sw         ( w_sw        ),
+        .w_digit      ( w_digit     )
+    )
+    i_lab_top
+    (
+        .clk          ( clk         ),
 
-        .sum_vld   (   uo_out  [2]   ),
-        .sum_rdy   (   ui_in   [2]   ),
-        .sum_data  (   uo_out  [7:3] )
-);
+        .slow_clk     ( slow_clk    ),
+        .slow_clk_en  ( slow_clk_en ),
+
+        .rst          ( rst         ),
+
+        .key          ( key         ),
+        .sw           ( sw          ),
+        .led          (             ),
+
+        .abcdefgh     ( abcdefgh    ),
+        .digit        ( digit       ),
+
+        .x            (             ),
+        .y            (             ),
+
+        .red          (             ),
+        .green        (             ),
+        .blue         (             ),
+
+        .mic          (             ),
+        .sound        (             ),
+
+        .uart_rx      (             ),
+        .uart_tx      (             ),
+
+        .gpio         (             )
+    );
 
 endmodule

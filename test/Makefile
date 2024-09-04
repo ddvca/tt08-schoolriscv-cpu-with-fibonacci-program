@@ -6,8 +6,23 @@ SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 
-PROJECT_SOURCES = \
-    project.sv
+PROJECT_SOURCES =             \
+                              \
+    register_with_rst.sv      \
+    strobe_gen.sv             \
+                              \
+    sr_alu.sv                 \
+    sr_control.sv             \
+    sr_cpu.sv                 \
+    sr_cpu.svh                \
+    sr_decode.sv              \
+    sr_register_file.sv       \
+                              \
+    instruction_rom.sv        \
+    seven_segment_display.sv  \
+                              \
+    lab_top.sv                \
+    project.sv                \
 
 ifneq ($(GATES),yes)
 
