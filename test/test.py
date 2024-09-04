@@ -40,3 +40,7 @@ async def test_project(dut):
 
     # Keep testing the module by changing the input values, waiting for
     # one or more clock cycles, and asserting the expected output values.
+
+    # YURI: I added the extra wait below
+    # Wait for 100 clock cycles to see the output values
+    await ClockCycles(dut.clk, 100)

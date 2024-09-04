@@ -7,6 +7,19 @@ rm -rf run
 mkdir  run
 cd     run
 
+#-----------------------------------------------------------------------------
+
+#  nc                              - Copyright notice will not be displayed
+#  a                               - assembly only, do not simulate
+#  ae<n>                           - terminate RARS with integer exit code if an assemble error occurs
+#  dump .text HexText program.hex  - dump segment .text to program.hex file in HexText format
+
+java -jar ../../bin/rars1_6.jar  \
+    nc a ae1 dump .text HexText  \
+    program.hex ../program.s
+
+#-----------------------------------------------------------------------------
+
 iverilog -g2005-sv -s tb          \
     -I ..      -I ../../src       \
        ../*.sv    ../../src/*.sv  \
