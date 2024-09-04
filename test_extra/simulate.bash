@@ -26,3 +26,7 @@ iverilog -g2005-sv -s tb          \
     |& tee ../log.txt
 
 vvp a.out |& tee ../log.txt
+
+#-----------------------------------------------------------------------------
+
+gtkwave dump.vcd --script ../gtkwave.tcl
