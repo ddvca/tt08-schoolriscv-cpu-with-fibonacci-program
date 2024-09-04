@@ -34,7 +34,7 @@ module tt_um_yuri_panchul_schoolriscv_cpu_with_fibonacci_program
 
     //------------------------------------------------------------------------
 
-    assign rst     = ~ rst_n';
+    assign rst     = ~ rst_n;
     assign key     =   ui_in [0];
 
     assign uo_out  =   abcdefgh;
