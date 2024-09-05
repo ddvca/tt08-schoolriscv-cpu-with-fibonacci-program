@@ -19,84 +19,22 @@ module tt_um_yuri_panchul_schoolriscv_cpu_with_fibonacci_program
 
     //------------------------------------------------------------------------
 
-    localparam clk_mhz = 50,
-               w_key   = 1,
-               w_digit = 8;
+    wire rst = ~ rst_n;
+
+    wire [3:0] pc;
+    wire [3:0] reg_a0;
+
+    wire pass, fail;
+
+    soc i_soc (.*);
 
     //------------------------------------------------------------------------
 
-    wire                 rst;
-    wire                 slow_clk_en;
-    wire                 key;
-
-    wire [          7:0] abcdefgh;
-    wire [w_digit - 1:0] digit;
-
-    //------------------------------------------------------------------------
-
-    assign rst     = ~ rst_n;
-    assign key     =   ui_in [0];
-
-    assign uo_out  =   abcdefgh;
-    assign uio_out =   digit;
+    assign uo_out  = { 6'b0, fail, pass };
+    assign uio_out = { pc, reg_a0 };
 
     assign uio_oe  = '1;
 
-    wire _unused = & { ena, ui_in [7:1], uio_in, 1'b0 };
-
-    //------------------------------------------------------------------------
-
-    strobe_gen
-    # (
-        .clk_mhz      ( clk_mhz     ),
-        .strobe_hz    ( 3           )
-    )
-    i_strobe_gen
-    (
-        .clk          ( clk         ),
-        .rst          ( rst         ),
-        .strobe       ( slow_clk_en )
-    );
-
-    //------------------------------------------------------------------------
-
-    lab_top
-    # (
-        .clk_mhz      ( clk_mhz     ),
-        .w_key        ( w_key       ),
-        .w_sw         ( w_key       ),
-        .w_digit      ( w_digit     )
-    )
-    i_lab_top
-    (
-        .clk          ( clk         ),
-
-        .slow_clk     ( clk         ),
-        .slow_clk_en  ( slow_clk_en ),
-
-        .rst          ( rst         ),
-
-        .key          ( key         ),
-        .sw           ( key         ),
-        .led          (             ),
-
-        .abcdefgh     ( abcdefgh    ),
-        .digit        ( digit       ),
-
-        .x            (             ),
-        .y            (             ),
-
-        .red          (             ),
-        .green        (             ),
-        .blue         (             ),
-
-        .mic          (             ),
-        .sound        (             ),
-
-        .uart_rx      (             ),
-        .uart_tx      (             ),
-
-        .gpio         (             )
-    );
+    wire _unused = & { ena, ui_in, uio_in, 1'b0 };
 
 endmodule

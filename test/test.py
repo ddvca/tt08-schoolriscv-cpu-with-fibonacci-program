@@ -42,5 +42,5 @@ async def test_project(dut):
     # one or more clock cycles, and asserting the expected output values.
 
     # YURI: I added the extra wait below
-    # Wait for 100 clock cycles to see the output values
-    await ClockCycles(dut.clk, 100)
+    # Wait for 300 clock cycles to see the output values
+    await ClockCycles(dut.clk, 300)
