@@ -29,4 +29,4 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 300)
 
     # Check the test passed
-    assert dut.iuo_out.value == 1
+    assert dut.uo_out.value == 1

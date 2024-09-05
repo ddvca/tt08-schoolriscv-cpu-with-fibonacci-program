@@ -1,7 +1,7 @@
 # Tiny Tapeout project information
 project:
   title:        "schoolRISCV CPU with Fibonacci program"  # Project title
-  author:       "Stanislav Zhelnio, Alexander Romanov and Yuri Panchul"   # Your name
+  author:       "Stanislav Zhelnio, Alexander Romanov, Yuri Panchul and Mike Kuskov"   # Your name
   discord:      "yuri_panchul"   # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "A minimalistic SoC with a schoolRISCV educational CPU and a ROM memory with a program that computes the Fibonacci numbers."  # One line description of what your project does
   language:     "SystemVerilog"  # other examples include SystemVerilog, Amaranth, VHDL, etc
