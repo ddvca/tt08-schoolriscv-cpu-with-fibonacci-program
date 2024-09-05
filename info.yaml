@@ -17,21 +17,19 @@ project:
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "instruction_rom.sv"
-    - "lab_top.sv"
     - "project.sv"
     - "register_with_rst.sv"
-    - "seven_segment_display.sv"
+    - "soc.sv"
     - "sr_alu.sv"
     - "sr_control.sv"
     - "sr_cpu.sv"
     - "sr_decode.sv"
     - "sr_register_file.sv"
-    - "strobe_gen.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]:  "key [0]"
+  ui[0]:  ""
   ui[1]:  ""
   ui[2]:  ""
   ui[3]:  ""
@@ -41,24 +39,24 @@ pinout:
   ui[7]:  ""
 
   # Outputs
-  uo[0]:  "7-segment dot"
-  uo[1]:  "7-segment G"
-  uo[2]:  "7-segment F"
-  uo[3]:  "7-segment E"
-  uo[4]:  "7-segment D"
-  uo[5]:  "7-segment C"
-  uo[6]:  "7-segment B"
-  uo[7]:  "7-segment A"
+  uo[0]:  "Test pass"
+  uo[1]:  "Test fail"
+  uo[2]:  ""
+  uo[3]:  ""
+  uo[4]:  ""
+  uo[5]:  ""
+  uo[6]:  ""
+  uo[7]:  ""
 
   # Bidirectional pins
-  uio[0]: "7-segment digit[0] enable"
-  uio[1]: "7-segment digit[1] enable"
-  uio[2]: "7-segment digit[2] enable"
-  uio[3]: "7-segment digit[3] enable"
-  uio[4]: "7-segment digit[4] enable"
-  uio[5]: "7-segment digit[5] enable"
-  uio[6]: "7-segment digit[6] enable"
-  uio[7]: "7-segment digit[7] enable"
+  uio[0]: "CPU reg a0[0]"
+  uio[1]: "a0[1]"
+  uio[2]: "a0[2]"
+  uio[3]: "a0[3]"
+  uio[4]: "Program Counter pc[0]"
+  uio[5]: "pc[1]"
+  uio[6]: "pc[2]"
+  uio[7]: "pc[3]"
 
 # Do not change!
 yaml_version: 6
