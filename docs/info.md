@@ -29,7 +29,7 @@ A self-checking testbench for the design is located in a directory
   and the status **PASS** or **FAIL**.
 
 After the manufacturing, the design can be manually tested by resetting,
-driving a slow (3 MHz) clock, and observing the outputs.
+driving a slow (3 Hz) clock, and observing the outputs.
 
 ## External hardware
 

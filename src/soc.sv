@@ -21,7 +21,7 @@ module soc
 
     sr_cpu cpu
     (
-        .clk     ( slow_clk ),
+        .clk     ( clk      ),
         .rst     ( rst      ),
         .regAddr ( regAddr  ),
         .regData ( regData  ),
